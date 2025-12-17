@@ -33,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ onSearchClick, onDepartmentsClick }) => {
                 <span className="block text-blue-600 xl:inline">sizni kutmoqda</span>
               </h1>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                125,000 dan ortiq bosma va elektron resurslar, zamonaviy o'quv zallari va sun'iy intellekt yordamchisi bilan ta'lim sifatini yangi bosqichga olib chiqing.
+                75,000 dan ortiq bosma va 20.000 dan ortiq elektron resurslar, zamonaviy o'quv zallari va sun'iy intellekt yordamchisi bilan ta'lim sifatini yangi bosqichga olib chiqing.
               </p>
               <div className="mt-8 sm:mt-10 sm:flex sm:justify-center lg:justify-start gap-3">
                 <div className="rounded-md shadow">
@@ -57,7 +57,7 @@ const Hero: React.FC<HeroProps> = ({ onSearchClick, onDepartmentsClick }) => {
               </div>
               
               <div className="mt-8 grid grid-cols-2 gap-4 sm:flex sm:justify-center lg:justify-start text-sm text-gray-500 font-medium">
-                  <div className="flex items-center"><BookOpen className="w-4 h-4 mr-2 text-blue-500"/> 125K+ Kitoblar</div>
+                  <div className="flex items-center"><BookOpen className="w-4 h-4 mr-2 text-blue-500"/> 70K+ Kitoblar</div>
                   <div className="flex items-center"><Database className="w-4 h-4 mr-2 text-green-500"/> Scopus & WoS</div>
               </div>
             </div>

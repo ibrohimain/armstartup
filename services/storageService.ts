@@ -1,6 +1,6 @@
 import { Book, NewsItem, LibraryStat, Comment, FacultyStat } from '../types';
 import { createClient } from '@supabase/supabase-js';
-
+// в
 // --- SUPABASE CONFIGURATION ---
 // 1. https://supabase.com saytiga kiring va "New Project" oching (Bepul).
 // 2. Settings -> API bo'limidan URL va ANON KEY ni oling.

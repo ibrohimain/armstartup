@@ -83,8 +83,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           </div>
           
           <div className="text-center text-xs text-gray-400 mt-4">
-             Demo Admin: <b>admin</b> / <b>admin123</b> <br/>
-             Demo User: <b>student</b> / <b>student</b>
+             Demo Admin: <b>admin</b> / <b>xush kelibsiz</b> <br/>
+             Demo User: <b>student</b> / <b>xush kelibsiz</b>
           </div>
         </form>
       </div>

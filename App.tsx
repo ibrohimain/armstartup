@@ -60,14 +60,14 @@ const App: React.FC = () => {
                        <div className="bg-blue-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transform rotate-3 hover:rotate-6 transition-transform">
                             <BookOpen className="h-8 w-8 text-blue-600" />
                        </div>
-                       <div className="text-5xl font-extrabold text-gray-900 mb-2">125K+</div>
+                       <div className="text-5xl font-extrabold text-gray-900 mb-2">70K+</div>
                        <div className="text-gray-500 font-medium">Umumiy kitob fondi</div>
                     </div>
                     <div className="p-8 bg-white rounded-2xl shadow-xl border border-gray-100 transform hover:-translate-y-2 transition-transform duration-300">
                        <div className="bg-green-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transform -rotate-3 hover:-rotate-6 transition-transform">
                             <Coffee className="h-8 w-8 text-green-600" />
                        </div>
-                       <div className="text-5xl font-extrabold text-gray-900 mb-2">450</div>
+                       <div className="text-5xl font-extrabold text-gray-900 mb-2">100</div>
                        <div className="text-gray-500 font-medium">O'quv zallari sig'imi</div>
                     </div>
                     <div className="p-8 bg-white rounded-2xl shadow-xl border border-gray-100 transform hover:-translate-y-2 transition-transform duration-300">
