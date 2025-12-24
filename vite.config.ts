@@ -21,6 +21,3 @@ export default defineConfig(({ mode }) => {
       }
     };
 });
-
-
-// k
