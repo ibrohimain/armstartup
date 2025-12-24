@@ -1,102 +1,88 @@
+
 <!DOCTYPE html>
-<html lang="uz">
-  <head>
-    <!-- Charset -->
-    <meta charset="UTF-8" />
-
-    <!-- Responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <link rel="icon" type="image/svg+xml" href="/logo.jpg" />
-    <!-- Title -->
-    <title>JizPI Axborot-Resurs Markazi | Elektron Kutubxona va Axborot Tizimi</title>
-
-    <!-- SEO -->
-    <meta
-      name="description"
-      content="Jizzax Politexnika Instituti Axborot-Resurs Markazi — elektron kutubxona, ilmiy manbalar va axborot xizmatlari yagona platformasi."
-    />
-    <meta
-      name="keywords"
-      content="JizPI, Axborot-Resurs Markazi, elektron kutubxona, ilmiy maqolalar, universitet kutubxonasi, ARM"
-    />
-    <meta name="author" content="Jizzax Politexnika Instituti" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph (Telegram, Facebook, WhatsApp) -->
-    <meta property="og:title" content="JizPI Axborot-Resurs Markazi" />
-    <meta
-      property="og:description"
-      content="Jizzax Politexnika Instituti Axborot-Resurs Markazining rasmiy elektron axborot platformasi."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/logo.png" />
-    <meta property="og:url" content="https://arm.jizpi.uz" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="JizPI Axborot-Resurs Markazi" />
-    <meta
-      name="twitter:description"
-      content="Ilmiy va elektron axborot resurslari uchun zamonaviy platforma"
-    />
-    <meta name="twitter:image" content="/logo.png" />
-
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#1e40af" />
-
-    <!-- Apple / PWA -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="JizPI ARM" />
-    <link rel="apple-touch-icon" href="/logo.png" />
-
-    <!-- Fonts & Tailwind -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARM Hub Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Custom styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-      .scrollbar-thin::-webkit-scrollbar {
-        width: 6px;
-      }
-      .scrollbar-thin::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
-      .scrollbar-thin::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 3px;
-      }
-      .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
-    </style>
-
-    <!-- Import map -->
-    <script type="importmap">
-      {
-        "imports": {
-          "react": "https://esm.sh/react@^19.2.3",
-          "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-          "react/": "https://esm.sh/react@^19.2.3/",
-          "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
-          "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
-          "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2"
+        body { 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden;
         }
-      }
-    </script>
 
-    <!-- Local CSS -->
-    <link rel="stylesheet" href="/index.css" />
-  </head>
+        /* Global Custom Scrollbar Dizayni */
+        /* Chrome, Safari va Edge uchun */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
 
-  <body class="bg-gray-50 text-slate-800 antialiased">
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(100, 116, 139, 0.1); /* juda shaffof slate rangi */
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        /* Skroll ustiga borganda ko'rinishi */
+        *:hover::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.2); /* shaffof indigo rangi */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.5) !important; /* faolroq indigo */
+        }
+
+        /* Firefox uchun */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(100, 116, 139, 0.1) transparent;
+        }
+
+        /* Skrollni butunlay berkitish uchun maxsus klass (kerak bo'lsa) */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Silliq skroll harakati */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animatsiyalar uchun yordamchi klasslar */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "firebase/": "https://esm.sh/firebase@^12.7.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-slate-50 text-slate-900">
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+<script type="module" src="/index.tsx"></script>
+</body>
 </html>

@@ -1,4 +1,8 @@
 {
-  "name": "JizPI Axborot-Resurs Markazi",
-  "description": "Jizzax politexnika instituti Axborot-resurs markazi (ARM) uchun maxsus zamonaviy web platforma. Kitob qidirish, elektron resurslar va sun'iy intellekt yordamchisi."
+  "name": "Firebase Feedback Portal",
+  "description": "A professional feedback system where users submit data without login, and admins manage it with AI-powered summaries.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
 }
