@@ -21,6 +21,7 @@ import AdminRoomManagement from './components/AdminRoomManagement';
 import AIChatbot from './components/AIChatbot';
 import { auth } from './firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
+import './index.css';
 
 const App: React.FC = () => {
   const [viewMode, setViewMode] = useState<ViewMode>(ViewMode.DASHBOARD);
