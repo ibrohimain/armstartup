@@ -1,0 +1,8 @@
+{
+  "name": "Firebase Feedback Portal",
+  "description": "A professional feedback system where users submit data without login, and admins manage it with AI-powered summaries.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
