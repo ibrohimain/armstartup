@@ -9,6 +9,11 @@ body {
     background-color: #f8fafc;
 }
 
+/* 3D Perspective for Cards */
+.perspective-1000 {
+    perspective: 1000px;
+}
+
 /* Custom Scrollbar - Minimal & Clean */
 ::-webkit-scrollbar {
     width: 6px;
@@ -35,6 +40,15 @@ body {
 .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+/* Selection prevention for modals */
+.pointer-events-none {
+    pointer-events: none !important;
+}
+
+.pointer-events-auto {
+    pointer-events: auto !important;
 }
 
 html {

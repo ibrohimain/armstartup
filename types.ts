@@ -15,7 +15,6 @@ export interface Submission {
   message: string;
   category: string;
   createdAt: number;
-  aiSummary?: string;
 }
 
 export interface StaffProfile {
@@ -75,7 +74,8 @@ export enum ViewMode {
   ADMIN_BOOKINGS = 'ADMIN_BOOKINGS',
   ADMIN_MANUALS = 'ADMIN_MANUALS',
   ADMIN_CATALOGING = 'ADMIN_CATALOGING',
-  ADMIN_ROOM_MANAGEMENT = 'ADMIN_ROOM_MANAGEMENT'
+  ADMIN_ROOM_MANAGEMENT = 'ADMIN_ROOM_MANAGEMENT',
+  USER_MANUAL = 'USER_MANUAL'
 }
 
 export interface ARMEvent {
