@@ -9,13 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "@firebase/app": "^0.14.6",
+    "@firebase/auth": "^1.12.0",
+    "@firebase/firestore": "^4.9.3",
     "@google/genai": "^1.34.0",
     "firebase": "^12.7.0",
-    "@firebase/app": "^0.14.6",
-    "@firebase/firestore": "^4.9.3",
-    "@firebase/auth": "^1.12.0"
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-simple-typewriter": "^5.0.1"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

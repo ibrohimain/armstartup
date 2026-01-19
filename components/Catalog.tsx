@@ -105,7 +105,7 @@ const Catalog: React.FC = () => {
             <input 
               type="text" 
               placeholder="Kitob, muallif yoki inventar №..."
-              className="w-full pl-16 pr-8 py-6 bg-white border border-slate-100 rounded-[3rem] focus:ring-[12px] focus:ring-indigo-500/5 outline-none transition-all shadow-2xl shadow-slate-200/30 font-bold text-slate-800 text-lg"
+              className="w-full pl-[88px] pr-8 py-6 bg-white border border-slate-100 rounded-[3rem] focus:ring-[12px] focus:ring-indigo-500/5 outline-none transition-all shadow-2xl shadow-slate-200/30 font-bold text-slate-800 text-lg"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -133,14 +133,14 @@ const Catalog: React.FC = () => {
           <p className="mt-10 text-slate-400 font-black uppercase tracking-[0.3em] text-xs animate-pulse">Fond ma'lumotlari yuklanmoqda...</p>
         </div>
       ) : filtered.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-5 ">
           {filtered.map(book => (
-            <div key={book.id} className="group flex flex-col h-full perspective-1000">
+            <div key={book.id} className="group w-[100%] h-[500px] perspective-1000">
               {/* Premium Book Card */}
-              <div className="bg-white rounded-[3.5rem] p-6 border border-slate-100 shadow-sm transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(79,70,229,0.15)] flex flex-col h-full transform-gpu group-hover:-translate-y-3 relative overflow-hidden">
+              <div className="bg-white rounded-[1rem] p-3 border border-slate-100 shadow-2xl transition-all duration-1000 hover:shadow-[0_40px_80px_-20px_rgba(79,70,229,0.15)] flex flex-col h-full transform-gpu group-hover:-translate-y-3 relative overflow-hidden">
                 
                 {/* Image Section */}
-                <div className="aspect-[3/4] rounded-[2.5rem] mb-6 overflow-hidden relative shadow-inner bg-slate-50 border border-slate-50">
+                <div className="aspect-[3/4] rounded-[0.5rem] mb-6 overflow-hidden relative shadow-inner bg-slate-500 border border-slate-50 h-[250px]">
                   <img 
                     src={book.coverUrl || DEFAULT_BOOK_COVER} 
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
@@ -167,7 +167,7 @@ const Catalog: React.FC = () => {
                 </div>
 
                 {/* Text Content */}
-                <div className="flex-grow space-y-3 px-2">
+                <div className="flex-grow space-y-2 px-1">
                   <div className="flex justify-between items-start gap-2">
                     <h3 className="font-black text-slate-800 text-xl leading-tight group-hover:text-indigo-600 transition-colors line-clamp-2">{book.title}</h3>
                   </div>

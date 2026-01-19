@@ -93,9 +93,9 @@ const AdminDashboard: React.FC = () => {
         <div className="space-y-6">
            <h3 className="text-xl sm:text-2xl font-black text-slate-800 tracking-tight ml-2">Tezkor Amallar</h3>
            <div className="flex flex-col gap-3">
-              <button onClick={() => navigateTo(ViewMode.ADMIN_BOOKS)} className="w-full bg-indigo-600 text-white font-black py-4.5 rounded-2xl shadow-lg text-[10px] uppercase tracking-widest">Yangi Kitob</button>
-              <button onClick={() => navigateTo(ViewMode.ADMIN_EVENTS)} className="w-full bg-[#1a2332] text-white font-black py-4.5 rounded-2xl shadow-lg text-[10px] uppercase tracking-widest">Tadbir E'lon Qilish</button>
-              <button onClick={() => navigateTo(ViewMode.ARM_TEAM)} className="w-full bg-white text-slate-700 border border-slate-200 font-black py-4.5 rounded-2xl text-[10px] uppercase tracking-widest">Jamoa Vazifalari</button>
+              <button onClick={() => navigateTo(ViewMode.ADMIN_BOOKS)} className="w-full bg-indigo-600 text-white font-black py-4.5 rounded-2xl shadow-lg text-[10px] uppercase tracking-widest p-4">Yangi Kitob</button>
+              <button onClick={() => navigateTo(ViewMode.ADMIN_EVENTS)} className="w-full bg-[#1a2332] text-white font-black py-4.5 rounded-2xl shadow-lg text-[10px] uppercase tracking-widest p-4">Tadbir E'lon Qilish</button>
+              <button onClick={() => navigateTo(ViewMode.ARM_TEAM)} className="w-full bg-white text-slate-700 border border-slate-200 font-black py-4.5 rounded-2xl text-[10px] uppercase tracking-widest p-4">Jamoa Vazifalari</button>
            </div>
            
            <div className="bg-[#fff9e6] p-6 rounded-[2rem] border border-amber-100">

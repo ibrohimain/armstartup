@@ -22,6 +22,9 @@ import SystemManual from './components/SystemManual';
 import { auth, db } from './firebase';
 import { onAuthStateChanged, signOut } from "@firebase/auth";
 import { collection, setDoc, doc, onSnapshot, deleteDoc, serverTimestamp } from "@firebase/firestore";
+import { Typewriter } from 'react-simple-typewriter';
+
+// import { log } from 'console';
 
 const App: React.FC = () => {
   const [viewMode, setViewMode] = useState<ViewMode>(ViewMode.DASHBOARD);
@@ -82,23 +85,29 @@ const App: React.FC = () => {
   };
 
   const navItems = [
-    { id: ViewMode.DASHBOARD, label: 'Asosiy', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
-    { id: ViewMode.CATALOG, label: 'Katalog', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13' },
-    { id: ViewMode.DIGITAL_LIBRARY, label: 'Raqamli ARM', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2' },
-    { id: ViewMode.ANALYTICS, label: 'Metodika', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10' },
-    { id: ViewMode.SERVICE_DESK, label: 'Xizmatlar', icon: 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z' },
+    { id: ViewMode.DASHBOARD, label: 'Bosh sahifa', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+    { id: ViewMode.CATALOG, label: 'Elektron Kutubxona', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13' },
+    { id: ViewMode.DIGITAL_LIBRARY, label: 'Raqamli fond', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2' },
+    { id: ViewMode.ANALYTICS, label: 'Metodika va Monitoring', icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10' },
+    { id: ViewMode.SERVICE_DESK, label: 'Foydalanish zallari', icon: 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z' },
     { id: ViewMode.SCIENTIFIC_ROADMAP, label: 'Ilmiy Ko\'mak', icon: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9' },
     { id: ViewMode.USER_MANUAL, label: 'Yo\'riqnoma', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13' },
     { id: ViewMode.FEEDBACK, label: 'Murojaat Yo\'llash', icon: 'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994-.586' }
   ];
 
   const adminNavItems = [
-    { id: ViewMode.ADMIN_DASHBOARD, label: 'Dashboard' },
-    { id: ViewMode.ARM_TEAM, label: 'ARM Team (Xodim)' },
+    { id: ViewMode.ADMIN_DASHBOARD, label: 'Admin xonasi' },
+    { id: ViewMode.ARM_TEAM, label: 'ARM Jamoasi' },
     { id: ViewMode.ADMIN_ROOM_MANAGEMENT, label: 'Xona Boshqaruvi' },
-    { id: ViewMode.ADMIN_CATALOGING, label: 'Smart Katalog' },
-    { id: ViewMode.ADMIN_MANUALS, label: 'Metodika (+)' },
+    { id: ViewMode.ADMIN_CATALOGING, label: 'Aqilli ARM Katalogi' },
+    { id: ViewMode.ADMIN_MANUALS, label: 'Metodikalar yuklash' },
   ];
+
+  const phrases = [
+  "Barcha ilmiy resurslar, elektron katalog va xizmatlar yagona intellektual platformada jamlangan.",
+  "Kitoblar va maqolalarni osongina topish va band qilish mumkin.",
+  "Uslubiy qo‘llanmalar va yillik ish rejalari bir joyda mavjud."
+];
 
   const LiveBadge = () => (
     <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full shadow-sm">
@@ -117,12 +126,12 @@ const App: React.FC = () => {
           className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity" 
           onClick={() => { setViewMode(ViewMode.DASHBOARD); setIsMobileMenuOpen(false); }}
         >
-          <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-100">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13" />
-            </svg>
+          <div className="w-20 h-10 bg-indigo-600 rounded-[100%] flex items-center justify-center shadow-lg shadow-indigo-100">
+              <img src='/img/logo.jpg' alt="logo" className="rounded-[100%]"/>
+            {/* <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            </svg> */}
           </div>
-          <span className="font-black text-xl tracking-tighter text-slate-800 italic uppercase">ARM Hub</span>
+          <span className="font-black text-xl tracking-tighter text-slate-800 italic uppercase">Axborot resurs markazi</span>
         </div>
         <div className="self-start">
            <LiveBadge />
@@ -262,50 +271,144 @@ const App: React.FC = () => {
         <div className="max-w-[1600px] mx-auto w-full p-4 sm:p-6 lg:p-10">
           <div className="min-h-full pb-20 lg:pb-0">
             {viewMode === ViewMode.DASHBOARD && (
-              <div className="space-y-8 sm:space-y-12 animate-fade-in">
-                 <div className="bg-indigo-600 rounded-[2.5rem] sm:rounded-[4rem] p-8 sm:p-16 lg:p-24 text-white shadow-2xl relative overflow-hidden">
-                    <div className="relative z-10">
-                      <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest mb-8 backdrop-blur-md border border-white/10">
-                        <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-                        Oliy Ma'lumot Markazi
-                      </div>
-                      <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black mb-8 leading-tight tracking-tighter">
-                        Kelajak <br className="hidden sm:block"/>Kutubxonasi
-                      </h1>
-                      <p className="text-indigo-100 text-base sm:text-xl lg:text-2xl max-w-2xl mb-12 leading-relaxed font-medium opacity-90 italic">
-                        Barcha ilmiy resurslar, elektron katalog va xizmatlar yagona intellektual platformada jamlangan.
-                      </p>
-                      <div className="flex flex-wrap gap-4">
-                        <button onClick={() => setViewMode(ViewMode.CATALOG)} className="bg-white text-indigo-600 px-10 py-5 rounded-2xl font-black shadow-2xl hover:bg-slate-50 transition-all text-[11px] uppercase tracking-[0.2em]">Katalog</button>
-                        <button onClick={() => setViewMode(ViewMode.DIGITAL_LIBRARY)} className="bg-indigo-500/30 text-white border border-white/20 px-10 py-5 rounded-2xl font-black backdrop-blur-lg hover:bg-white/10 transition-all text-[11px] uppercase tracking-[0.2em]">Raqamli ARM</button>
-                      </div>
-                    </div>
-                 </div>
-                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10">
-                    <div className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all group cursor-pointer" onClick={() => setViewMode(ViewMode.CATALOG)}>
-                      <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-inner">
-                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13" /></svg>
-                      </div>
-                      <h3 className="font-black text-slate-800 mb-4 text-2xl tracking-tighter uppercase">Katalog</h3>
-                      <p className="text-slate-500 text-sm font-medium leading-relaxed italic">Fonddagi barcha kitoblarni topish, band qilish va statusini kuzatish.</p>
-                    </div>
-                    <div className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all group cursor-pointer" onClick={() => setViewMode(ViewMode.ANALYTICS)}>
-                      <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-inner">
-                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10" /></svg>
-                      </div>
-                      <h3 className="font-black text-slate-800 mb-4 text-2xl tracking-tighter uppercase">Metodika</h3>
-                      <p className="text-slate-500 text-sm font-medium leading-relaxed italic">Uslubiy qo'llanmalar, me'yoriy hujjatlar va yillik ish rejalari bazasi.</p>
-                    </div>
-                    <div className="bg-slate-900 p-10 rounded-[3rem] text-white shadow-2xl hover:-translate-y-2 transition-all cursor-pointer group" onClick={() => setViewMode(ViewMode.SCIENTIFIC_ROADMAP)}>
-                      <div className="w-16 h-16 bg-white/10 text-white rounded-2xl flex items-center justify-center mb-10 group-hover:bg-indigo-600 transition-all">
-                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9" /></svg>
-                      </div>
-                      <h3 className="font-black mb-4 text-2xl tracking-tighter uppercase">Ilmiy Ko'mak</h3>
-                      <p className="text-indigo-200 opacity-70 text-sm font-medium leading-relaxed italic">Scopus bazalarida ishlash bo'yicha ekspert tavsiyalari va yo'riqnomalar.</p>
-                    </div>
-                 </div>
-              </div>
-            )}
+  <div className="space-y-12 animate-fade-in">
+    {/* Hero Section */}
+    <div className="relative overflow-hidden rounded-[2.5rem] sm:rounded-[1rem] p-8 sm:p-16 lg:p-24 text-white shadow-2xl">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-[url('/img/bg.jpg')] bg-cover bg-center"
+        style={{ opacity: 0.60 }}
+      ></div>
+
+      {/* Overlay for darkening */}
+      <div className="absolute inset-0 bg-black/40"></div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest mb-8 backdrop-blur-md border border-white/10">
+          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse "></span>
+          Axborot Resurs Markazi
+        </div>
+        <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black mb-8 leading-tight tracking-tighter">
+          Kelajak <br className="hidden sm:block"/>Kutubxonasi
+        </h1>
+        <p className="text-indigo-100 text-base sm:text-xl lg:text-2xl max-w-2xl mb-12 leading-relaxed font-medium opacity-90 italic">
+  <Typewriter
+    words={phrases}
+    loop={0} // 0 = cheksiz aylanish
+    cursor
+    cursorStyle="|"
+    typeSpeed={60}
+    deleteSpeed={40}
+    delaySpeed={2000} // har bir so‘z orasidagi vaqt
+  />
+</p>
+        <div className="flex flex-wrap gap-4">
+          <button
+            onClick={() => setViewMode(ViewMode.CATALOG)}
+            className="bg-white text-indigo-600 px-10 py-5 rounded-2xl font-black shadow-2xl hover:bg-slate-50 transition-all text-[11px] uppercase tracking-[0.2em]"
+          >
+            Katalog
+          </button>
+          <button
+            onClick={() => setViewMode(ViewMode.DIGITAL_LIBRARY)}
+            className="bg-indigo-500/30 text-white border border-white/20 px-10 py-5 rounded-2xl font-black backdrop-blur-lg hover:bg-white/10 transition-all text-[11px] uppercase tracking-[0.2em]"
+          >
+            Raqamli ARM
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {/* Cards Section */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10">
+      {/* Catalog Card */}
+      <div
+        className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all group cursor-pointer"
+        onClick={() => setViewMode(ViewMode.CATALOG)}
+      >
+        <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-inner">
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2.5"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13"
+            />
+          </svg>
+        </div>
+        <h3 className="font-black text-slate-800 mb-4 text-2xl tracking-tighter uppercase">
+          Katalog
+        </h3>
+        <p className="text-slate-500 text-sm font-medium leading-relaxed italic">
+          Fonddagi barcha kitoblarni topish, band qilish va statusini kuzatish.
+        </p>
+      </div>
+
+      {/* Methodology Card */}
+      <div
+        className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all group cursor-pointer"
+        onClick={() => setViewMode(ViewMode.ANALYTICS)}
+      >
+        <div className="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-10 group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-inner">
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2.5"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10"
+            />
+          </svg>
+        </div>
+        <h3 className="font-black text-slate-800 mb-4 text-2xl tracking-tighter uppercase">
+          Metodika
+        </h3>
+        <p className="text-slate-500 text-sm font-medium leading-relaxed italic">
+          Uslubiy qo'llanmalar, me'yoriy hujjatlar va yillik ish rejalari bazasi.
+        </p>
+      </div>
+
+      {/* Scientific Help Card */}
+      <div
+        className="bg-slate-900 p-10 rounded-[3rem] text-white shadow-2xl hover:-translate-y-2 transition-all cursor-pointer group"
+        onClick={() => setViewMode(ViewMode.SCIENTIFIC_ROADMAP)}
+      >
+        <div className="w-16 h-16 bg-white/10 text-white rounded-2xl flex items-center justify-center mb-10 group-hover:bg-indigo-600 transition-all">
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2.5"
+              d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9"
+            />
+          </svg>
+        </div>
+        <h3 className="font-black mb-4 text-2xl tracking-tighter uppercase">
+          Ilmiy Ko'mak
+        </h3>
+        <p className="text-indigo-200 opacity-70 text-sm font-medium leading-relaxed italic">
+          Scopus bazalarida ishlash bo'yicha ekspert tavsiyalari va yo'riqnomalar.
+        </p>
+      </div>
+    </div>
+  </div>
+)}
+
             
             {viewMode === ViewMode.CATALOG && <Catalog />}
             {viewMode === ViewMode.DIGITAL_LIBRARY && <DigitalLibrary />}

@@ -129,7 +129,7 @@ const AdminManuals: React.FC = () => {
               <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-2">Annotatsiya</label>
               <textarea required rows={4} className="w-full px-5 py-4 bg-slate-50 rounded-2xl outline-none font-medium text-sm leading-relaxed" placeholder="Tavsif..." value={manualForm.annotation} onChange={e => setManualForm({...manualForm, annotation: e.target.value})} />
             </div>
-            <button disabled={loading} type="submit" className="w-full bg-indigo-600 text-white font-black py-4.5 rounded-2xl shadow-lg uppercase text-[10px] tracking-widest">Fondga qo'shish</button>
+            <button disabled={loading} type="submit" className="w-full bg-indigo-600 text-white font-black py-4.5 rounded-2xl shadow-lg uppercase text-[10px] tracking-widest p-4">Fondga qo'shish</button>
           </form>
         )}
 
@@ -150,7 +150,7 @@ const AdminManuals: React.FC = () => {
                    </select>
                 </div>
              </div>
-             <button disabled={loading} type="submit" className="w-full bg-slate-900 text-white font-black py-4.5 rounded-2xl uppercase text-[10px] tracking-widest">Xujjatni saqlash</button>
+             <button disabled={loading} type="submit" className="w-full p-4 bg-slate-900 text-white font-black py-4.5 rounded-2xl uppercase text-[10px] tracking-widest">Xujjatni saqlash</button>
           </form>
         )}
 
@@ -176,7 +176,7 @@ const AdminManuals: React.FC = () => {
                    <input required type="date" className="w-full px-5 py-3.5 bg-slate-50 rounded-xl font-bold text-sm" value={eventForm.date} onChange={e => setEventForm({...eventForm, date: e.target.value})} />
                 </div>
              </div>
-             <button disabled={loading} type="submit" className="w-full bg-emerald-600 text-white font-black py-4.5 rounded-2xl uppercase text-[10px] tracking-widest">Tadbirni tasdiqlash</button>
+             <button disabled={loading} type="submit" className="w-full p-4 bg-emerald-600 text-white font-black py-4.5 rounded-2xl uppercase text-[10px] tracking-widest">Tadbirni tasdiqlash</button>
           </form>
         )}
 
@@ -192,7 +192,7 @@ const AdminManuals: React.FC = () => {
                 <input required type="text" className="w-full px-5 py-3.5 bg-slate-50 rounded-xl font-bold text-sm" value={periodicalForm.lastIssue} onChange={e => setPeriodicalForm({...periodicalForm, lastIssue: e.target.value})} />
               </div>
             </div>
-            <button disabled={loading} type="submit" className="w-full bg-slate-800 text-white font-black py-4.5 rounded-2xl uppercase text-[10px] tracking-widest">Nashrni kiritish</button>
+            <button disabled={loading} type="submit" className="w-full p-4 bg-slate-800 text-white font-black py-4.5 rounded-2xl uppercase text-[10px] tracking-widest">Nashrni kiritish</button>
           </form>
         )}
       </div>
