@@ -16,6 +16,7 @@ const Catalog: React.FC = () => {
   const [requestForm, setRequestForm] = useState({ bookTitle: '', author: '', reason: '', phone: '' });
 
   // Body scroll lock - Modal ochilganda fonni to'xtatish
+  // sd
   useEffect(() => {
     if (showRequestModal || activeQR) {
       document.body.style.overflow = 'hidden';
