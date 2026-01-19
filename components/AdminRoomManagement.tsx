@@ -406,7 +406,7 @@ const AdminRoomManagement: React.FC = () => {
                    </div>
                    <div className="pt-6">
                       <button disabled={loading} type="submit" className="w-full bg-slate-900 text-white font-black py-6 rounded-[2.5rem] shadow-2xl hover:bg-indigo-600 transition-all uppercase text-[11px] tracking-widest shadow-slate-200">
-                         {loading ? 'SAQLANMOQDA...' : 'METAMA'LUMOTNI YANGILASH'}
+                         {loading ? 'SAQLANMOQDA...' : "METAMA'LUMOTNI YANGILASH"}
                       </button>
                    </div>
                 </form>
