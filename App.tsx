@@ -92,7 +92,8 @@ const App: React.FC = () => {
     { id: ViewMode.SERVICE_DESK, label: 'Foydalanish zallari', icon: 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z' },
     { id: ViewMode.SCIENTIFIC_ROADMAP, label: 'Ilmiy Ko\'mak', icon: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9' },
     { id: ViewMode.USER_MANUAL, label: 'Yo\'riqnoma', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13' },
-    { id: ViewMode.FEEDBACK, label: 'Murojaat Yo\'llash', icon: 'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994-.586' }
+    { id: ViewMode.FEEDBACK, label: 'Murojaat Yo\'llash', icon: 'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994-.586' },
+    { id: ViewMode.EVENTS, label: 'Yangilik va Tadbirlar', icon: 'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994-.586' }
   ];
 
   const adminNavItems = [
@@ -205,6 +206,7 @@ const App: React.FC = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
             ADMIN KIRISH
+            
           </button>
         )}
       </div>
@@ -310,6 +312,7 @@ const App: React.FC = () => {
           >
             Katalog
           </button>
+          
           <button
             onClick={() => setViewMode(ViewMode.DIGITAL_LIBRARY)}
             className="bg-indigo-500/30 text-white border border-white/20 px-10 py-5 rounded-2xl font-black backdrop-blur-lg hover:bg-white/10 transition-all text-[11px] uppercase tracking-[0.2em]"
@@ -317,8 +320,10 @@ const App: React.FC = () => {
             Raqamli ARM
           </button>
         </div>
+        
       </div>
     </div>
+
 
     {/* Cards Section */}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10">
@@ -351,6 +356,8 @@ const App: React.FC = () => {
       </div>
 
       {/* Methodology Card */}
+
+      
       <div
         className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all group cursor-pointer"
         onClick={() => setViewMode(ViewMode.ANALYTICS)}
@@ -416,6 +423,7 @@ const App: React.FC = () => {
             {viewMode === ViewMode.SERVICE_DESK && <ServiceDesk />}
             {viewMode === ViewMode.EVENTS && <Events />}
             {viewMode === ViewMode.MY_CABINET && <MyCabinet />}
+            {viewMode === ViewMode.NEWS && <Events/>}
             {viewMode === ViewMode.FEEDBACK && <UserForm />}
             {viewMode === ViewMode.ANALYTICS && <Analytics />}
             {viewMode === ViewMode.USER_MANUAL && <SystemManual />}

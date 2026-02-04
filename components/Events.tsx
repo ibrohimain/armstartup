@@ -31,7 +31,7 @@ const Events: React.FC = () => {
 
       {/* Kamtarona Filtrlar */}
       <div className="flex justify-center gap-4 mb-10">
-        {['Hammasi', 'Yangilik', 'Tadbir'].map(cat => (
+        {['Hammasi', '', 'Tadbir'].map(cat => (
           <button
             key={cat}
             onClick={() => setFilter(cat as any)}
